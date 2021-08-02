@@ -31,4 +31,4 @@ console.log('Цель заработать ' + mission + ' гривен');
 console.log(addExpenses.toLowerCase().split(','));
 
 // task2-5
-console.log(budgetDay);
+console.log(Math.round(budgetDay));
