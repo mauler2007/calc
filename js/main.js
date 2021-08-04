@@ -37,22 +37,22 @@ console.log(addExpenses.toLowerCase().split(','));
 console.log(Math.round(budgetDay));
 
 // task3-2
-// var money = prompt('Ваш месячный доход?');
-// console.log(money);
+var money = prompt('Ваш месячный доход?');
+console.log(money);
 
 // // task3-3
-// var addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
-// console.log(addExpenses);
+var addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
+console.log(addExpenses);
 
 // // task3-4
-// var deposit = confirm('Есть ли у вас депозит в банке?');
-// console.log(typeof(deposit));
+var deposit = confirm('Есть ли у вас депозит в банке?');
+console.log(typeof(deposit));
 
-// if (deposit) {
-//   console.log('true');
-// } else {
-//   console.log('false');
-// }
+if (deposit) {
+  console.log('true');
+} else {
+  console.log('false');
+}
 
 // task3-5
 var expenses1 = prompt('Введите обязательную статью расходов?');
@@ -89,20 +89,3 @@ if (budgetDay > 1200) {
 } else if (budgetDay < 0) {
   console.log('Что то пошло не так');
 }
-
-// switch (budgetDay) {
-//   case 2:
-//     console.log(2);
-//     break;
-
-//   case 4:1
-//     console.log(4);
-//     break;
-
-//   case 4:
-//     console.log(4);
-//     break;
-
-//   default:
-//     console.log('no sum');
-// }
