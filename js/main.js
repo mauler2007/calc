@@ -1,18 +1,12 @@
 'use strict';
 
 // task1
-var money;
-money = 1000;
-var income;
-income = 'deposit';
-var addExpenses;
-addExpenses = 'taxi , courses , restourant';
-var deposit;
-deposit = true;
-var mission;
-mission = 1000000;
-var period;
-period = 12;
+var money = 10000;
+var income = 'deposit';
+var addExpenses = 'taxi , courses , restourant';
+var deposit = true;
+var mission = 1000000;
+var period = 12;
 
 var budgetMounth = 1000;
 var budgetDay = budgetMounth / 30;
@@ -37,35 +31,37 @@ console.log(addExpenses.toLowerCase().split(','));
 console.log(Math.round(budgetDay));
 
 // task3-2
-// var money = prompt('Ваш месячный доход?');
-// console.log(money);
+var money = prompt('Ваш месячный доход?', [10000]);
+console.log(typeof + money);
 
 // // task3-3
-// var addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
-// console.log(addExpenses);
+var addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', ['voda', 'eda']);
+console.log(addExpenses);
 
 // // task3-4
-// var deposit = confirm('Есть ли у вас депозит в банке?');
-// console.log(typeof(deposit));
+var deposit = confirm('Есть ли у вас депозит в банке?');
+console.log(typeof (deposit));
 
-// if (deposit) {
-//   console.log('true');
-// } else {
-//   console.log('false');
-// }
+if (deposit) {
+  console.log('true');
+} else {
+  console.log('false');
+}
 
 // task3-5
-var expenses1 = prompt('Введите обязательную статью расходов?');
+var expenses1 = prompt('Введите обязательную статью расходов?', ['pivo']);
+
 console.log('expenses1: ', expenses1);
 
-var amount1 = prompt('Во сколько это обойдется?');
-console.log('amount1: ', amount1);
+var amount1 = +prompt('Во сколько это обойдется?', [1000]);
+console.log('amount1: ', typeof amount1);
 
-var expenses2 = prompt('Введите обязательную статью расходов?');
+var expenses2 = prompt('Введите обязательную статью расходов?', ['voda']);
 console.log('expenses2: ', expenses2);
 
-var amount2 = prompt('Во сколько это обойдется?');
-console.log('amount2: ', amount2);
+var amount2 = +prompt('Во сколько это обойдется?', [2000]);
+
+console.log('amount2: ', typeof amount2);
 
 // task3-6
 var budgetMonth = +amount1 + (+amount2);
@@ -90,19 +86,31 @@ if (budgetDay > 1200) {
   console.log('Что то пошло не так');
 }
 
-// switch (budgetDay) {
-//   case 2:
-//     console.log(2);
-//     break;
 
-//   case 4:1
-//     console.log(4);
-//     break;
+// task4-1
+const sum = function getExpensesMonth(x, y) {
+  return x + y;
+};
 
-//   case 4:
-//     console.log(4);
-//     break;
+var expensesMonth = sum(amount1, amount2);
+console.log('res: ', expensesMonth);
 
-//   default:
-//     console.log('no sum');
-// }
+// task4-2
+// task4-3
+const accumulatedMonth = function getAccumulatedMonth(a, b, c) {
+  return a - b - c;
+};
+
+var balance = accumulatedMonth(money, amount1, amount2);
+console.log('balance: ', balance);
+
+// task4-4
+const goalAchive = function getTargetMonth(a, b) {
+  return a / b;
+  // console.log(object);
+};
+
+let result = Math.ceil(goalAchive(mission, balance));
+console.log('result: ', result);
+
+
