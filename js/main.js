@@ -9,8 +9,8 @@ var mission = 1000000;
 var period = 12;
 
 var budgetMounth = 1000;
-var budgetDay = budgetMounth / 30;
-console.log('budgetDay: ', budgetDay);
+var budgetDay = +budgetMounth / 30;
+// console.log('budgetDay: ', budgetDay);
 
 // task2-1
 console.log(typeof (money));
@@ -18,29 +18,29 @@ console.log(typeof (income));
 console.log(typeof (deposit));
 
 // task2-2
-console.log(addExpenses.length);
+// console.log(addExpenses.length);
 
 // task2-3
-console.log('Период равен ' + period + ' месяцев');
-console.log('Цель заработать ' + mission + ' гривен');
+// console.log('Период равен ' + period + ' месяцев');
+// console.log('Цель заработать ' + mission + ' гривен');
 
 // task2-4
-console.log(addExpenses.toLowerCase().split(','));
+// console.log(addExpenses.toLowerCase().split(','));
 
 // task2-5
 console.log(Math.round(budgetDay));
 
 // task3-2
 var money = prompt('Ваш месячный доход?', [10000]);
-console.log(typeof + money);
+// console.log(typeof +money);
 
 // // task3-3
-var addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', ['voda', 'eda']);
+var addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', ['Еда', 'Вода']);
 console.log(addExpenses);
 
 // // task3-4
 var deposit = confirm('Есть ли у вас депозит в банке?');
-console.log(typeof (deposit));
+// console.log(typeof (deposit));
 
 if (deposit) {
   console.log('true');
@@ -51,29 +51,29 @@ if (deposit) {
 // task3-5
 var expenses1 = prompt('Введите обязательную статью расходов?', ['pivo']);
 
-console.log('expenses1: ', expenses1);
+// console.log('expenses1: ', expenses1);
 
 var amount1 = +prompt('Во сколько это обойдется?', [1000]);
 console.log('amount1: ', typeof amount1);
 
 var expenses2 = prompt('Введите обязательную статью расходов?', ['voda']);
-console.log('expenses2: ', expenses2);
+// console.log('expenses2: ', expenses2);
 
 var amount2 = +prompt('Во сколько это обойдется?', [2000]);
 
 console.log('amount2: ', typeof amount2);
 
-// task3-6
-var budgetMonth = +amount1 + (+amount2);
-console.log('budgetMonth: ', budgetMonth);
+// task3-6  deleted. 
+// var budgetMonth = +amount1 + (+amount2);
+// console.log('budgetMonth: ', budgetMonth);
 
 // task3-7
-var period = Math.ceil(mission / budgetMonth);
-console.log('period: ', period);
+// var period = Math.ceil(mission / budgetMonth);
+// console.log('period: ', period);
 
-// task3-8
-var budgetDay = Math.floor(budgetMonth / 30);
-console.log('budgetDay: ', budgetDay);
+// task3-8  deleted. I count it differently. 
+// var budgetDay = Math.floor(budgetMonth / 30);
+// console.log('budgetDay: ', budgetDay);
 
 // task3-8
 if (budgetDay > 1200) {
@@ -85,7 +85,6 @@ if (budgetDay > 1200) {
 } else if (budgetDay < 0) {
   console.log('Что то пошло не так');
 }
-
 
 // task4-1
 const sum = function getExpensesMonth(x, y) {
@@ -112,5 +111,10 @@ const goalAchive = function getTargetMonth(a, b) {
 
 let result = Math.ceil(goalAchive(mission, balance));
 console.log('result: ', result);
+
+// task4-6
+var budgetDay = Math.floor(balance / 30);
+console.log('budgetDay: ', budgetDay);
+
 
 
