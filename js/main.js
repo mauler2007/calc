@@ -78,6 +78,7 @@ console.log('period: ', period);
 // task3-8
 var budgetDay = Math.floor(budgetMonth / 30);
 console.log('budgetDay: ', budgetDay);
+// co
 
 // task3-8
 if (budgetDay > 1200) {
