@@ -63,8 +63,6 @@ if (deposit) {
 }
 
 // task3-5
-
-
 // console.log('amount2: ', typeof amount2);
 
 // task3-6  deleted. 
@@ -90,32 +88,16 @@ if (budgetDay > 1200) {
   console.log('Что то пошло не так');
 }
 
-
-
-
 // task4-1
-
-
-
 console.log('res: ', expensesMonth);
 
 // task4-2
 // task4-3
-
-
-
 console.log('balance: ', balance);
-
 // task4-4
-
-
-
 console.log('result: ', result);
-
 // task4-6
-
 console.log('budgetDay: ', budgetDay);
-
 
 showTypeOf(money);
 showTypeOf(income);
