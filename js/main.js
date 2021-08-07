@@ -1,21 +1,28 @@
 'use strict';
 
 // task1
-var money;
-money = 1000;
-var income;
-income = 'deposit';
-var addExpenses;
-addExpenses = 'taxi , courses , restourant';
-var deposit;
-deposit = true;
-var mission;
-mission = 1000000;
-var period;
-period = 12;
+var money = 1000;
+var income= 'deposit';
+var addExpenses = 'taxi , courses , restourant';
+var deposit = true;
+var mission = 1000000;
+var period = 12;
 
 var budgetMounth = 1000;
 var budgetDay = budgetMounth / 30;
+
+var money = prompt('Ваш месячный доход?');
+var addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
+var deposit = confirm('Есть ли у вас депозит в банке?');
+var expenses1 = prompt('Введите обязательную статью расходов?');
+var amount1 = prompt('Во сколько это обойдется?');
+var expenses2 = prompt('Введите обязательную статью расходов?');
+var amount2 = prompt('Во сколько это обойдется?');
+var budgetMonth = +amount1 + (+amount2);
+var period = Math.ceil(mission / budgetMonth);
+var budgetDay = Math.floor(budgetMonth / 30);
+
+
 console.log('budgetDay: ', budgetDay);
 
 // task2-1
@@ -37,15 +44,12 @@ console.log(addExpenses.toLowerCase().split(','));
 console.log(Math.round(budgetDay));
 
 // task3-2
-var money = prompt('Ваш месячный доход?');
 console.log(money);
 
 // // task3-3
-var addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
 console.log(addExpenses);
 
 // // task3-4
-var deposit = confirm('Есть ли у вас депозит в банке?');
 console.log(typeof(deposit));
 
 if (deposit) {
@@ -55,30 +59,22 @@ if (deposit) {
 }
 
 // task3-5
-var expenses1 = prompt('Введите обязательную статью расходов?');
 console.log('expenses1: ', expenses1);
 
-var amount1 = prompt('Во сколько это обойдется?');
 console.log('amount1: ', amount1);
 
-var expenses2 = prompt('Введите обязательную статью расходов?');
 console.log('expenses2: ', expenses2);
 
-var amount2 = prompt('Во сколько это обойдется?');
 console.log('amount2: ', amount2);
 
 // task3-6
-var budgetMonth = +amount1 + (+amount2);
 console.log('budgetMonth: ', budgetMonth);
 
 // task3-7
-var period = Math.ceil(mission / budgetMonth);
 console.log('period: ', period);
 
 // task3-8
-var budgetDay = Math.floor(budgetMonth / 30);
 console.log('budgetDay: ', budgetDay);
-// co
 
 // task3-8
 if (budgetDay > 1200) {
