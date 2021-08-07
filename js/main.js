@@ -10,29 +10,10 @@ var period = 12;
 
 // var budgetMounth = 1000;
 var budgetDay = Number(balance / 30);
-
-// task2-5
-console.log(Math.round(budgetDay));
-
-// task3-2
-var money = prompt('Ваш месячный доход?', [10000]);
-console.log(typeof +money);
-
-// // task3-3
-var addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', ['Еда', 'Вода']);
-console.log('addExpenses: ', addExpenses);
-
-// // task3-4
+var money = +prompt('Ваш месячный доход?', [10000]);
+var addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', ['Топливо', 'Обучение']);
 var deposit = confirm('Есть ли у вас депозит в банке?');
-console.log(typeof (deposit));
 
-if (deposit) {
-  console.log('deposit: ', 'true');
-} else {
-  console.log('deposit: ', 'false');
-}
-
-// task3-5
 var expenses1 = prompt('Введите обязательную статью расходов?', ['pivo']);
 
 var amount1 = +prompt('Во сколько это обойдется?', [1000]);
@@ -42,7 +23,49 @@ var expenses2 = prompt('Введите обязательную статью р�
 
 var amount2 = +prompt('Во сколько это обойдется?', [2000]);
 
-console.log('amount2: ', typeof amount2);
+var expenses = [expenses1, expenses2];
+console.log('expenses: ', expenses);
+
+var showTypeOf = function (data) {
+  console.log(data, typeof (data));
+};
+
+const sum = function getExpensesMonth(x, y) {
+  return x + y;
+};
+var expensesMonth = sum(amount1, amount2);
+const accumulatedMonth = function getAccumulatedMonth(a, b, c) {
+  return a - b - c;
+};
+var balance = accumulatedMonth(money, amount1, amount2);
+const goalAchive = function getTargetMonth(a, b) {
+  return a / b;
+};
+var result = Math.ceil(goalAchive(mission, balance));
+var budgetDay = Math.floor(balance / 30);
+
+// task2-5
+// console.log(Math.round(budgetDay));
+
+// task3-2
+// console.log(typeof +money);
+
+// // task3-3
+console.log('addExpenses: ', addExpenses);
+
+// // task3-4
+console.log(typeof (deposit));
+
+if (deposit) {
+  console.log('deposit: ', 'true');
+} else {
+  console.log('deposit: ', 'false');
+}
+
+// task3-5
+
+
+// console.log('amount2: ', typeof amount2);
 
 // task3-6  deleted. 
 // var budgetMonth = +amount1 + (+amount2);
@@ -67,34 +90,33 @@ if (budgetDay > 1200) {
   console.log('Что то пошло не так');
 }
 
-// task4-1
-const sum = function getExpensesMonth(x, y) {
-  return x + y;
-};
 
-var expensesMonth = sum(amount1, amount2);
+
+
+// task4-1
+
+
+
 console.log('res: ', expensesMonth);
 
 // task4-2
 // task4-3
-const accumulatedMonth = function getAccumulatedMonth(a, b, c) {
-  return a - b - c;
-};
 
-var balance = accumulatedMonth(money, amount1, amount2);
+
+
 console.log('balance: ', balance);
 
 // task4-4
-const goalAchive = function getTargetMonth(a, b) {
-  return a / b;
-};
 
-let result = Math.ceil(goalAchive(mission, balance));
+
+
 console.log('result: ', result);
 
 // task4-6
-var budgetDay = Math.floor(balance / 30);
+
 console.log('budgetDay: ', budgetDay);
 
 
-
+showTypeOf(money);
+showTypeOf(income);
+showTypeOf(deposit);
