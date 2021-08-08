@@ -1,60 +1,56 @@
 'use strict';
 
 // task1
-var money = 10000;
-var income = 'deposit';
-var addExpenses = 'taxi , courses , restourant';
-var deposit = true;
-var mission = 1000000;
-var period = 12;
+let income = 'deposit';
+let mission = 1000000;
+let money = +prompt('Ваш месячный доход?', [10000]);
+// let budgetMounth = 1000;
+let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', ['Топливо', 'Обучение']);
+let deposit = confirm('Есть ли у вас депозит в банке?');
 
-// var budgetMounth = 1000;
-var budgetDay = Number(balance / 30);
-var money = +prompt('Ваш месячный доход?', [10000]);
-var addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', ['Топливо', 'Обучение']);
-var deposit = confirm('Есть ли у вас депозит в банке?');
+let expenses1 = prompt('Введите обязательную статью расходов?', ['Еда']);
 
-var expenses1 = prompt('Введите обязательную статью расходов?', ['pivo']);
+let amount1 = +prompt('Во сколько это обойдется?', [1000]);
 
-var amount1 = +prompt('Во сколько это обойдется?', [1000]);
-console.log('amount1: ', typeof amount1);
+let expenses2 = prompt('Введите обязательную статью расходов?', ['Вода']);
 
-var expenses2 = prompt('Введите обязательную статью расходов?', ['voda']);
+let amount2 = +prompt('Во сколько это обойдется?', [2000]);
 
-var amount2 = +prompt('Во сколько это обойдется?', [2000]);
+let listOfExpenses = [expenses1, expenses2];
+console.log('listOfExpenses: ', listOfExpenses);
 
-var expenses = [expenses1, expenses2];
-console.log('expenses: ', expenses);
-
-var showTypeOf = function (data) {
+let showTypeOf = function (data) {
   console.log(data, typeof (data));
 };
 
-const sum = function getExpensesMonth(x, y) {
+// 4.1 // Объявить функцию getExpensesMonth.Функция возвращает сумму всех обязательных расходов за месяц
+const sumAllExpenses = function getExpensesMonth(x, y) {
   return x + y;
 };
-var expensesMonth = sum(amount1, amount2);
+
+console.log('sumAllExpenses: ', sumAllExpenses(amount1, amount2));
+
+// 4.2 , 4.3  Объявить функцию getAccumulatedMonth.Функция возвращает Накопления за месяц(Доходы минус расходы)
 const accumulatedMonth = function getAccumulatedMonth(a, b, c) {
   return a - b - c;
 };
-var balance = accumulatedMonth(money, amount1, amount2);
-const goalAchive = function getTargetMonth(a, b) {
+
+// task 4.4 Объявить функцию getTargetMonth.Подсчитывает за какой период будет достигнута цель, зная результат месячного накопления и возвращает результат
+
+const daysToGoalAchive = function getTargetMonth(a, b) {
   return a / b;
 };
-var result = Math.ceil(goalAchive(mission, balance));
-var budgetDay = Math.floor(balance / 30);
 
-// task2-5
-// console.log(Math.round(budgetDay));
+// task 4.6 budgetDay высчитываем исходя из значения месячного накопления(accumulatedMonth)
+let balance = accumulatedMonth(money, amount1, amount2);
 
-// task3-2
-// console.log(typeof +money);
+let budgetDay = Math.floor(balance / 30);
 
 // // task3-3
 console.log('addExpenses: ', addExpenses);
 
 // // task3-4
-console.log(typeof (deposit));
+console.log('deposit :', typeof (deposit));
 
 if (deposit) {
   console.log('deposit: ', 'true');
@@ -62,20 +58,8 @@ if (deposit) {
   console.log('deposit: ', 'false');
 }
 
-// task3-5
-// console.log('amount2: ', typeof amount2);
-
-// task3-6  deleted. 
-// var budgetMonth = +amount1 + (+amount2);
-// console.log('budgetMonth: ', budgetMonth);
-
 // task3-7
-var period = Math.ceil(mission / balance);
-console.log('period: ', period);
-
-// task3-8  deleted. I count it differently in // task4-6
-// var budgetDay = Math.floor(budgetMonth / 30);
-// console.log('budgetDay: ', budgetDay);
+let period = Math.ceil(mission / balance);
 
 // task3-8
 if (budgetDay > 1200) {
@@ -88,17 +72,10 @@ if (budgetDay > 1200) {
   console.log('Что то пошло не так');
 }
 
-// task4-1
-console.log('res: ', expensesMonth);
-
 // task4-2
 // task4-3
 console.log('balance: ', balance);
 // task4-4
-console.log('result: ', result);
+console.log('daysToGoalAchive: ', Math.ceil(daysToGoalAchive(mission, balance)));
 // task4-6
 console.log('budgetDay: ', budgetDay);
-
-showTypeOf(money);
-showTypeOf(income);
-showTypeOf(deposit);
