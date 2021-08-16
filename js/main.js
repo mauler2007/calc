@@ -50,24 +50,22 @@ showTypeof(deposit);
 let expenses = [];
 
 
-// 4.1 // Объявить функцию getExpensesMonth.Функция возвращает сумму всех обязательных расходов за месяц
+
+let isEmpty = function(str) {
+  return (!str || 0 === str.length);
+}
+
 let getExpensesMonth = function () {
   let sum = 0;
 
   for (let i = 0; i < 3; i++) {
     expenses[i] = prompt('Введите обязательную статью расходов?', "Садик Государственный");
 
-    do {
-      sum += +prompt('Во сколько это обойдется?');
+    sum += +prompt('Во сколько это обойдется?');
+
+    while (!isNumber(sum)) {
+      sum = +prompt('Во сколько это обойдется?');
     }
-    while (!isNumber(sum));
-
-    // do {
-    //   money = prompt('Ваш месячный доход?');
-    // }
-    // while (isNaN(money) || money.trim() === '' || money === null);
-
-    // sum += +prompt('Во сколько это обойдется?');
   }
 
   console.log(expenses);
@@ -86,10 +84,15 @@ let getAccumulatedMounth = function () {
 let accumulatedMonth = getAccumulatedMounth();
 
 let getTargetMounth = function () {
-  return mission / accumulatedMonth
+
+  if (getTargetMounth < 0) {
+    console.log('Цель  HE будет достигнута');
+  }
+
+  return mission / accumulatedMonth;
 };
 
-let budgetDay = accumulatedMonth / 30;
+let budgetDay = getAccumulatedMounth() / 30;
 
 console.log('Цель будет достигнута за ' + Math.ceil(getTargetMounth()) + ' месяца');
 
@@ -108,4 +111,4 @@ let getStatusIncome = function () {
   }
 };
 
-console.log(getStatusIncome);
+console.log(getStatusIncome());
