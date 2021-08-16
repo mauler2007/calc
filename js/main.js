@@ -11,13 +11,13 @@ let money,
   mission = 1000000,
   period = 3;
 
-
 let start = function () {
 
 
   do {
     money = prompt('Ваш месячный доход?', 10000);
   }
+
   while (isNaN(money) || money.trim() === '' || money === null);
 
   // while (!isNumber(money)) {
@@ -53,12 +53,12 @@ let expenses = [];
 
 let isEmpty = function(str) {
   return (!str || 0 === str.length);
-}
+};
 
 let getExpensesMonth = function () {
   let sum = 0;
 
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 2; i++) {
     expenses[i] = prompt('Введите обязательную статью расходов?', "Садик Государственный");
 
     sum += +prompt('Во сколько это обойдется?');
@@ -84,19 +84,16 @@ let getAccumulatedMounth = function () {
 let accumulatedMonth = getAccumulatedMounth();
 
 let getTargetMounth = function () {
-
-  if (getTargetMounth < 0) {
-    console.log('Цель  HE будет достигнута');
-  }
-
   return mission / accumulatedMonth;
 };
 
+if (getTargetMounth() <= 0) {
+  console.log('Цель не будет достигнута');
+} else {
+  console.log('Цель будет достигнута за ' + Math.ceil(getTargetMounth()) + ' месяца');
+}
+
 let budgetDay = getAccumulatedMounth() / 30;
-
-console.log('Цель будет достигнута за ' + Math.ceil(getTargetMounth()) + ' месяца');
-
-// task3-8
 
 let getStatusIncome = function () {
 
@@ -106,7 +103,7 @@ let getStatusIncome = function () {
     console.log('У вас средний уровень дохода');
   } else if (budgetDay < 600 && budgetDay > 0) {
     console.log('К сожалению у вас уровень дохода ниже среднего');
-  } else if (budgetDay < 0) {
+  } else if (budgetDay <= 0) {
     console.log('Что то пошло не так');
   }
 };
