@@ -1,83 +1,111 @@
 'use strict';
 
-// task1
-let income = 'deposit';
-let mission = 1000000;
-let money = +prompt('Ваш месячный доход?', [10000]);
-// let budgetMounth = 1000;
-let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', ['Топливо', 'Обучение']);
-let deposit = confirm('Есть ли у вас депозит в банке?');
-
-let expenses1 = prompt('Введите обязательную статью расходов?', ['Еда']);
-
-let amount1 = +prompt('Во сколько это обойдется?', [1000]);
-
-let expenses2 = prompt('Введите обязательную статью расходов?', ['Вода']);
-
-let amount2 = +prompt('Во сколько это обойдется?', [2000]);
-
-let listOfExpenses = [expenses1, expenses2];
-console.log('listOfExpenses: ', listOfExpenses);
-
-let showTypeOf = function (data) {
-  console.log(data, typeof (data));
+let isNumber = function (n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
 };
+
+let money,
+  income = 'Фриланс',
+  addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', ['Топливо', 'Обучение']),
+  deposit = confirm('Есть ли у вас депозит в банке?'),
+  mission = 1000000,
+  period = 3;
+
+
+let start = function () {
+
+
+  do {
+    money = prompt('Ваш месячный доход?', 10000);
+  }
+  while (isNaN(money) || money.trim() === '' || money === null);
+
+  // while (!isNumber(money)) {
+  //   money = prompt('Ваш месячный доход?');
+  // }
+  //  проверяем введенные  пользоваьелем данные если не число то повторно  запрашиваю ответ
+  // while(isNaN(money) || money.trim() === '' || money === null) {
+  //    money = prompt('Ваш месячный доход?');
+  // }
+
+  // второй ваниант проверяем введенные  пользоваьелем данные если не число то повторно  запрашиваю ответ
+  // while (isNaN(parseFloat(money))) {
+  //   money = prompt('Ваш месячный доход?');
+  // }
+};
+
+// Expenses расходов
+//  Amount  количество
+
+start();
+
+let showTypeof = function (item) {
+  console.log(typeof item);
+};
+
+showTypeof(money);
+showTypeof(income);
+showTypeof(deposit);
+
+let expenses = [];
+
 
 // 4.1 // Объявить функцию getExpensesMonth.Функция возвращает сумму всех обязательных расходов за месяц
-const sumAllExpenses = function getExpensesMonth(x, y) {
-  return x + y;
+let getExpensesMonth = function () {
+  let sum = 0;
+
+  for (let i = 0; i < 3; i++) {
+    expenses[i] = prompt('Введите обязательную статью расходов?', "Садик Государственный");
+
+    do {
+      sum += +prompt('Во сколько это обойдется?');
+    }
+    while (!isNumber(sum));
+
+    // do {
+    //   money = prompt('Ваш месячный доход?');
+    // }
+    // while (isNaN(money) || money.trim() === '' || money === null);
+
+    // sum += +prompt('Во сколько это обойдется?');
+  }
+
+  console.log(expenses);
+  return sum;
 };
 
-console.log('sumAllExpenses: ', sumAllExpenses(amount1, amount2));
+let expensesAmount = getExpensesMonth();
 
-// 4.2 , 4.3  Объявить функцию getAccumulatedMonth.Функция возвращает Накопления за месяц(Доходы минус расходы)
-const accumulatedMonth = function getAccumulatedMonth(a, b, c) {
-  return a - b - c;
+console.log('расходы за месяц: ' + expensesAmount);
+
+
+let getAccumulatedMounth = function () {
+  return money - expensesAmount;
 };
 
-// task 4.4 Объявить функцию getTargetMonth.Подсчитывает за какой период будет достигнута цель, зная результат месячного накопления и возвращает результат
+let accumulatedMonth = getAccumulatedMounth();
 
-const daysToGoalAchive = function getTargetMonth(a, b) {
-  return a / b;
+let getTargetMounth = function () {
+  return mission / accumulatedMonth
 };
 
-// task 4.6 budgetDay высчитываем исходя из значения месячного накопления(accumulatedMonth)
-let balance = accumulatedMonth(money, amount1, amount2);
+let budgetDay = accumulatedMonth / 30;
 
-let budgetDay = Math.floor(balance / 30);
-
-// // task3-3
-console.log('addExpenses: ', addExpenses);
-
-// // task3-4
-console.log('deposit :', typeof (deposit));
-
-if (deposit) {
-  console.log('deposit: ', 'true');
-} else {
-  console.log('deposit: ', 'false');
-}
-
-// task3-7
-let period = Math.ceil(mission / balance);
+console.log('Цель будет достигнута за ' + Math.ceil(getTargetMounth()) + ' месяца');
 
 // task3-8
-if (budgetDay > 1200) {
-  console.log('У вас высокий уровень дохода');
-} else if (1200 > budgetDay && budgetDay > 600) {
-  console.log('У вас средний уровень дохода');
-} else if (budgetDay < 600 && budgetDay > 0) {
-  console.log('К сожалению у вас уровень дохода ниже среднего');
-} else if (budgetDay < 0) {
-  console.log('Что то пошло не так');
-}
 
-// task4-2
-// task4-3
-console.log('balance: ', balance);
-// task4-4
-console.log('daysToGoalAchive: ', Math.ceil(daysToGoalAchive(mission, balance)));
-// task4-6
-console.log('budgetDay: ', budgetDay);
+let getStatusIncome = function () {
 
+  if (budgetDay > 1200) {
+    console.log('У вас высокий уровень дохода');
+  } else if (1200 > budgetDay && budgetDay > 600) {
+    console.log('У вас средний уровень дохода');
+  } else if (budgetDay < 600 && budgetDay > 0) {
+    console.log('К сожалению у вас уровень дохода ниже среднего');
+  } else if (budgetDay < 0) {
+    console.log('Что то пошло не так');
+  }
+};
 
+console.log(getStatusIncome);
