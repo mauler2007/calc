@@ -51,7 +51,7 @@ let expenses = [];
 
 
 
-let isEmpty = function(str) {
+let isEmpty = function (str) {
   return (!str || 0 === str.length);
 };
 
@@ -84,14 +84,20 @@ let getAccumulatedMounth = function () {
 let accumulatedMonth = getAccumulatedMounth();
 
 let getTargetMounth = function () {
-  return mission / accumulatedMonth;
+  if (accumulatedMonth <= 0) {
+    console.log('Цель HE будет достигнута');
+  } else {
+    return mission / accumulatedMonth;
+  }
 };
 
-if (getTargetMounth() <= 0) {
+if (getTargetMounth <= 0) {
   console.log('Цель не будет достигнута');
 } else {
-  console.log('Цель будет достигнута за ' + Math.ceil(getTargetMounth()) + ' месяца');
+ console.log('getTargetMounth: ' + typeof getTargetMounth());
 }
+
+console.log('Цель будет достигнута за ' + Math.ceil(getTargetMounth()) + ' месяца');
 
 let budgetDay = getAccumulatedMounth() / 30;
 
@@ -104,7 +110,7 @@ let getStatusIncome = function () {
   } else if (budgetDay < 600 && budgetDay > 0) {
     console.log('К сожалению у вас уровень дохода ниже среднего');
   } else if (budgetDay <= 0) {
-    console.log('Что то пошло не так');
+    console.log('budgetDay: ' + 'Что то пошло не так');
   }
 };
 
