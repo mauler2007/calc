@@ -42,8 +42,8 @@ let appData = {
       }
 
       let cashIncome = prompt('сумма дополнительного заработка', 10000);
-      if (isNumber(cashIncome)) {
-        console.log(cashIncome.length);
+      if (!isNumber(cashIncome)) {
+        alert("Нужно ввести число");
         appData.asking();
       }
 
@@ -51,14 +51,23 @@ let appData = {
       appData.cashIncome = cashIncome;
     }
 
-
     let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
-    appData.addExpenses = addExpenses.toLowerCase().split(',');
+      
+    // appData.addExpenses = addExpenses.split(',').map(val => val.charAt(0).toUpperCase() + val.substr(1).toLowerCase()).join(', ');
+    appData.addExpenses = addExpenses.split(',').map(function (val) {
+      val.charAt(0).toUpperCase() + val.substr(1).toLowerCase().join(', ');
+    });
     appData.deposit = confirm('Есть ли у вас депозит в банке?');
     for (let i = 0; i < 2; i++) {
+      let a = '';
+      do {
+        a = prompt('Введите обязательную статью расходов?');
+      } while (a.trim() === '' || isNumber(a));
 
-      let a = prompt('Введите обязательную статью расходов?');
-      appData.expenses[a] = +prompt('Во сколько это обойдется?');
+      do {
+        appData.expenses[a] = +prompt('Во сколько это обойдется?');
+      }
+      while (!isNumber(appData.expenses[a]));
     }
   },
   getExpensesMonth: function () {
@@ -102,7 +111,7 @@ let appData = {
       }
 
       appData.moneyDeposit = prompt('какая сумма  положена на депозит', 10000);
-      if (!isNumber(appData.moneyDeposit || appData.moneyDeposit.length === 0)) {
+      if (!isNumber(appData.moneyDeposit || appData.moneyDeposit.trim().length === 0)) {
         appData.getInfoDeposit();
       }
     }
